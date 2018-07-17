@@ -1,0 +1,47 @@
+<template>
+  <section class="post-list">
+    <PostPreview
+      v-for="post of posts"
+      :key="post.id"
+      :id="post.id"
+      :is-admin="isAdmin"
+      :thumbnail="post.thumbnail"
+      :title="post.title"
+      :previewText="post.previewText"
+    />
+    <!-- 也可以用 post in posts -->
+    <!-- 有 v-for 就要有 key -->
+  </section>
+</template>
+
+<script>
+  import PostPreview from '~/components/Posts/PostPreview';
+
+  export default {
+    components: {
+      PostPreview
+    },
+    props: {
+      isAdmin: {
+        type: Boolean,
+        default: false
+      },
+      posts: {
+        type: Array,
+        required: true
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .post-list {
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
